@@ -9,7 +9,7 @@
         {
             $this->name = $name;
             $this->price = $price;
-            $this->id - $id;
+            $this->id = $id;
         }
 
         function setName($new_name)
@@ -41,6 +41,7 @@
         {
             $executed = $GLOBALS['DB']->exec("INSERT INTO brands (name, price) VALUES ('{$this->getName()}', {$this->getPrice()});");
             if ($executed) {
+                $this->id = $GLOBALS['DB']->lastInsertId();
                 return true;
             } else {
                 return false;
@@ -64,6 +65,22 @@
         static function deleteAll()
         {
             $GLOBALS['DB']->exec("DELETE FROM brands;");
+        }
+
+        static function find($search_id)
+        {
+            $returned_brands = $GLOBALS['DB']->prepare("SELECT * FROM brands WHERE id = :id;");
+            $returned_brands->bindParam(':id', $search_id, PDO::PARAM_STR);
+            $returned_brands->execute();
+            foreach($returned_brands as $brand) {
+                $name = $brand['name'];
+                $price = $brand['price'];
+                $id = $brand['id'];
+                if ($id == $search_id) {
+                    $found_brand = new Brand($name, $price, $id);
+                }
+            }
+        return $found_brand;
         }
 
 

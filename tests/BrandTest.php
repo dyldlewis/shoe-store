@@ -92,13 +92,14 @@
             $price = 500;
             $test_brand = new Brand($name, $price);
             $test_brand->save();
+            $brand_id = $test_brand->getId();
 
             $name2 = "Stacy";
             $price2 = 2323;
             $test_brand2 = new Brand($name2, $price2);
             $test_brand2->save();
 
-            $result = Brand::find($test_brand->getId());
+            $result = Brand::find($brand_id);
             $this->assertEquals($test_brand, $result);
         }
 
