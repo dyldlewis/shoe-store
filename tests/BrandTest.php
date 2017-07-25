@@ -17,6 +17,16 @@
         {
             Brand::deleteAll();
         }
+
+        function testGetName()
+        {
+            $name = "billy";
+            $price = 20;
+            $test_brand = new Brand($name, $price);
+            $result = $test_brand->getName();
+
+            $this->assertEquals($name, $result);
+        }
         function testSave()
         {
             $name = "thingy";
