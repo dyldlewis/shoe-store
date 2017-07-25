@@ -13,6 +13,10 @@
 
     class StoreTest extends PHPUnit_Framework_TestCase
     {
+        protected function tearDown()
+        {
+            Store::deleteAll();
+        }
         function testGetName()
         {
             $name = "karen";
@@ -58,7 +62,7 @@
                $test_store2->save();
 
                Store::deleteAll();
-               
+
                $result = Store::getAll();
                $this->assertEquals([], $result);
            }
