@@ -67,5 +67,20 @@
                $this->assertEquals([], $result);
            }
 
+           function testFind()
+           {
+               $name = "Margery";
+               $test_store = new Store($name);
+               $test_store->save();
+               $store_id = $test_store->getId();
+
+               $name2 = "Stacy";
+               $test_store2 = new Store($name2);
+               $test_store2->save();
+
+               $result = Store::find($store_id);
+               $this->assertEquals($test_store, $result);
+           }
+
     }
 ?>
