@@ -13,6 +13,10 @@
 
     class BrandTest extends PHPUnit_Framework_TestCase
     {
+        protected function tearDown()
+        {
+            Brand::deleteAll();
+        }
         function testSave()
         {
             $name = "thingy";
