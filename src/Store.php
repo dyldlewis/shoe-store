@@ -27,12 +27,13 @@
 
         function save()
         {
-            // $executed = $GLOBALS['DB']->exec("INSERT INTO stores (name) VALUES ('{$this->getName()}');");
-            // if ($executed) {
-            //     return true;
-            // } return {
-            //     false;
-            // }
+            $executed = $GLOBALS['DB']->exec("INSERT INTO stores (name) VALUES ('{$this->getName()}');");
+            if ($executed) {
+                $this->id = $GLOBALS['DB']->lastInsertId();
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 ?>
