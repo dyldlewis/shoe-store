@@ -39,7 +39,7 @@
 
         function save()
         {
-            $exected = $GLOBALS['DB']->exec("INSERT INTO shoes (name, price) VALUES ('{$this->getName()}', {$this->getPrice});");
+            $executed = $GLOBALS['DB']->exec("INSERT INTO brands (name, price) VALUES ('{$this->getName()}', {$this->getPrice()});");
             if ($executed) {
                 return true;
             } else {

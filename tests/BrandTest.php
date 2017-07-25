@@ -19,9 +19,9 @@
             $price = 50;
             $test_brand = new Brand($name, $price);
 
-            $result = $test_brand->save();
+            $executed = $test_brand->save();
 
-            $this->assertTrue($result, "Brand was not successfully saved to the database");
+            $this->assertTrue($executed, "Brand was not successfully saved to the database");
         }
 
     }
