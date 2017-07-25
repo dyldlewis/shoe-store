@@ -13,6 +13,15 @@
 
     class StoreTest extends PHPUnit_Framework_TestCase
     {
+        function testGetName()
+        {
+            $name = "karen";
+            $test_store = new Store($name);
+            $result = $test_store->getName();
+
+            $this->assertEquals($name, $result);
+        }
+
         function testSave()
         {
             $name = "Roger";
