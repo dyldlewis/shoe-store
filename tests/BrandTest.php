@@ -18,6 +18,16 @@
             Brand::deleteAll();
         }
 
+        function testGetPrice()
+        {
+            $name = "terry";
+            $price = 500;
+            $test_brand = new Brand($name, $price);
+            $result = $test_brand->getPrice();
+
+            $this->assertEquals($price, $result);
+        }
+
         function testGetName()
         {
             $name = "billy";
