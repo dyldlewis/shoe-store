@@ -32,5 +32,36 @@
             $this->assertTrue($executed, "Course not successfully saved");
 
         }
+
+        function testGetAll()
+           {
+               $name = "Psych";
+               $test_store = new Store($name);
+               $test_store->save();
+
+               $name2 = "Math";
+               $test_store2 = new Store($name2);
+               $test_store2->save();
+
+               $result = Store::getAll();
+               $this->assertEquals([$test_store, $test_store2], $result);
+           }
+
+           function testDeleteAll()
+           {
+               $name = "Roger";
+               $test_store = new Store($name);
+               $test_store->save();
+
+               $name2 = "Jerry";
+               $test_store2 = new Store($name2);
+               $test_store2->save();
+
+               Store::deleteAll();
+               
+               $result = Store::getAll();
+               $this->assertEquals([], $result);
+           }
+
     }
 ?>
