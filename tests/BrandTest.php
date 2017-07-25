@@ -104,8 +104,18 @@
         }
 
 
+        function testUpdate()
+        {
+            $name = "Kevin";
+            $price = 200;
+            $test_brand = new Brand($name, $price);
+            $test_brand->save();
 
+            $new_name = "Richard";
+            $test_brand->update($new_name);
 
+            $this->assertEquals($new_name, $test_brand->getName());
+        }
     }
 
 
