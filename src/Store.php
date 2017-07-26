@@ -104,5 +104,19 @@
             }
         }
 
+        function delete()
+        {
+            $executed = $GLOBALS['DB']->exec("DELETE FROM stores WHERE id = {$this->getId()};");
+            if (!$executed) {
+                return false;
+            }
+            $executed = $GLOBALS['DB']->exec("DELETE FROM stores_brands WHERE store_id = {$this->getId()};");
+            if (!$executed) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
     }
 ?>

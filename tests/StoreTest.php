@@ -134,5 +134,19 @@
                 $this->assertEquals($test_store->getBrands(), [$test_brand]);
             }
 
+            function testDelete()
+              {
+                  $name = "Anthro";
+                  $new_store = new Store($name);
+                  $new_store->save();
+
+                  $name2 = "Anthony";
+                  $test_store = new Store($name2);
+                  $test_store->save();
+
+                  $test_store->delete();
+                  $this->assertEquals([$new_store], Store::getAll());
+              }
+
     }
 ?>
