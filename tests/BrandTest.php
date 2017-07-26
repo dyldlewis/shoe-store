@@ -119,7 +119,7 @@
 
         function testGetStores()
         {
-            $name = "Payless";
+            $name = "Moddetown";
             $test_store = new Store($name);
             $test_store->save();
 
@@ -127,7 +127,7 @@
             $test_store2 = new Store($store_name);
             $test_store2->save();
 
-            $name2 = "Billy";
+            $name2 = "Canteelo";
             $price = 2332;
             $test_brand = new Brand($name2, $price);
             $test_brand->save();
@@ -139,21 +139,21 @@
             $this->assertEquals([$test_store, $test_store2], $result);
         }
 
-    //     function testAddStore()
-    //     {
-    //         $name = "Ross";
-    //         $test_store = new Store($name);
-    //         $test_store->save();
-    //
-    //         $name = "Donovan";
-    //         $price = 2020;
-    //         $test_brand = new Brand($name, $price);
-    //         $test_brand->save();
-    //
-    //         $test_store->addBrand($test_brand);
-    //         $this->assertEquals($test_store->getBrands(), [$test_brand]);
-    //     }
-    // }
+        function testAddStore()
+        {
+            $name = "Shleepta";
+            $test_store = new Store($name);
+            $test_store->save();
+
+            $name = "Portown";
+            $price = 2020;
+            $test_brand = new Brand($name, $price);
+            $test_brand->save();
+
+            $test_brand->addStore($test_store);
+            $this->assertEquals($test_brand->getStores(), [$test_store]);
+        }
+    }
 
 
 
