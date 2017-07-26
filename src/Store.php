@@ -103,6 +103,22 @@
             $this->assertEquals([$test_brand, $test_brand2], $result);
         }
 
+        function testAddBrand()
+        {
+            $name = "Ross";
+            $test_store = new Store($name);
+            $test_store->save();
+
+            $name = "Donovan";
+            $price = 2020;
+            $test_brand = new Brand($name, $price);
+            $test_brand->save();
+
+            $test_store->addBrand($test_brand);
+            $this->assertEquals($test_store->getBrands(), [$test_brand]);
+        }
+
+
 
     }
 ?>
