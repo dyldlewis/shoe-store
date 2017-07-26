@@ -23,7 +23,7 @@
       <input id="brand_id" name="brand_id" type="hidden" value="{{ brand.getId }}">
       <label for="store_id">Select a store</label>
       <select id='store_id' name='store_id' type='text'>
-        {% for store in all_stores %}
+        {% for store in allStores %}
           <option value="{{ store.getId }}"> {{ store.getName }} </option>
         {% endfor %}
       </select>

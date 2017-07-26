@@ -13,6 +13,7 @@
       <ul>
       {% for brand in brands %}
         <li><a href="/brands/{{ brand.getId }}">{{ brand.getName }}</a></li>
+        <li>${{ brand.getPrice }}.00</li>
       {% endfor %}
       </ul>
     {% endif %}
