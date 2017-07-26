@@ -5,6 +5,7 @@
     */
 
     require_once "src/Store.php";
+    require_once "src/Brand.php";
 
     $server = 'mysql:host=localhost:8889;dbname=shoes_test';
     $username = 'root';
@@ -16,6 +17,7 @@
         protected function tearDown()
         {
             Store::deleteAll();
+            Brand::deleteAll();
         }
         function testGetName()
         {
@@ -94,43 +96,43 @@
                 $this->assertEquals($new_name, $result);
             }
 
-            // function testGetBrands()
-            // {
-            //     $name = "Payless";
-            //     $test_store = new Store($name);
-            //     $test_store->save();
-            //
-            //     $name2 = "Billy";
-            //     $price = 2332;
-            //     $test_brand = new Brand($name2, $price);
-            //     $test_brand->save();
-            //
-            //     $name3 = "Johnny";
-            //     $price2 = 9292;
-            //     $test_brand2 = new Brand($name3, $price2);
-            //     $test_brand2->save();
-            //
-            //     $test_store->addBrand($test_brand);
-            //     $test_store->addBrand($test_brand2);
-            //
-            //     $result = $test_store->getBrands();
-            //     $this->assertEquals([$test_brand, $test_brand2], $result);
-            // }
-            //
-            // function testAddBrand()
-            // {
-            //     $name = "Ross";
-            //     $test_store = new Store($name);
-            //     $test_store->save();
-            //
-            //     $name = "Donovan";
-            //     $price = 2020;
-            //     $test_brand = new Brand($name, $price);
-            //     $test_brand->save();
-            //
-            //     $test_store->addBrand($test_brand);
-            //     $this->assertEquals($test_store->getBrands(), [$test_brand]);
-            // }
+            function testGetBrands()
+            {
+                $name = "Payless";
+                $test_store = new Store($name);
+                $test_store->save();
+
+                $name2 = "Billy";
+                $price = 2332;
+                $test_brand = new Brand($name2, $price);
+                $test_brand->save();
+
+                $name3 = "Johnny";
+                $price2 = 9292;
+                $test_brand2 = new Brand($name3, $price2);
+                $test_brand2->save();
+
+                $test_store->addBrand($test_brand);
+                $test_store->addBrand($test_brand2);
+
+                $result = $test_store->getBrands();
+                $this->assertEquals([$test_brand, $test_brand2], $result);
+            }
+
+            function testAddBrand()
+            {
+                $name = "Ross";
+                $test_store = new Store($name);
+                $test_store->save();
+
+                $name = "Donovan";
+                $price = 2020;
+                $test_brand = new Brand($name, $price);
+                $test_brand->save();
+
+                $test_store->addBrand($test_brand);
+                $this->assertEquals($test_store->getBrands(), [$test_brand]);
+            }
 
     }
 ?>
